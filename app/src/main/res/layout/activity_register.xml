@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/AppBackground">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/colorPrimaryDark" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="15"
+            android:text="@string/edit_text_register"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp"
+                >
+
+
+                <EditText
+                    android:id="@+id/text_view_name_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_name_register_hint"
+                    android:padding="16dp"
+                    android:inputType="textPersonName"
+                    />
+                <EditText
+                    android:id="@+id/text_address_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_address_register_hint"
+                    android:padding="16dp"
+                    />
+                <EditText
+                    android:id="@+id/text_view_phone_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_phone_register"
+                    android:padding="16dp"
+                    android:inputType="phone"
+                   />
+                <EditText
+                    android:id="@+id/text_view_email_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_email_register"
+                    android:inputType="textEmailAddress"
+                    android:padding="16dp"
+                    />
+                <EditText
+                    android:id="@+id/text_view_password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_Password_register"
+                    android:inputType="textPassword"
+                    android:padding="16dp"
+                    />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/confirm_button"
+            android:padding="16dp"
+            android:text="@string/button_register"
+            android:textColor="@android:color/white"
+            android:id="@+id/button_register"/>
+    </LinearLayout>
+
+
+
+
+    <!--
+    -->
+</RelativeLayout>

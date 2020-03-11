@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Pharma</string>
+
+    <!--.......................................................-->
+    <!--main Activity strings-->
+    <string name="edit_text_presc_hint">Type the Medicines you want </string>
+    <string name="edit_text_address_hint">Address</string>
+    <string name="enter_order">put your order Here</string>
+    <!--Buttons-->
+    <string name="button_upload">OR Upload Prescription</string>
+    <string name="button_confirm">Confirm Order</string>
+    <string name="button_map">Browse the map to set your Location</string>
+    <string name="register">REGISTER</string>
+    <!--login strings-->
+    <string name="login">Login</string>
+    <string name="edit_text_email_login_hint">Email</string>
+    <string name="edit_text_password_login_hint">password</string>
+    <string name="text_view_forget_password">Forget Password?</string>
+    <string name="button_login">Login</string>
+    <!--Register strings-->
+    <string name="edit_text_name_register_hint">Name</string>
+    <string name="edit_text_address_register_hint">Address</string>
+    <string name="edit_text_register">Register</string>
+    <string name="edit_text_phone_register">Phone</string>
+    <string name="edit_text_email_register">Email</string>
+    <string name="edit_text_Password_register">Password</string>
+    <string name="button_register">Create Account</string>
+    <!--welcome strings-->
+    <string name="text_view_need_new_account_welcome">Create New Account</string>
+    <string name="text_view_welcome">Welcome</string>
+
+
+</resources>

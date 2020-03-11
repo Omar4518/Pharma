@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFA726</color>
+    <color name="colorPrimaryDark">#E65100</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="confirmButton">#FFC107</color>
+    <color name="welcomeText">#FFFFFF</color>
+    <color name="AppBackground">#FFE0B2</color>
+</resources>
