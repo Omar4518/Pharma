@@ -17,6 +17,8 @@
     <string name="edit_text_password_login_hint">password</string>
     <string name="text_view_forget_password">Forget Password?</string>
     <string name="button_login">Login</string>
+    <string name="text_or">Or</string>
+    <string name="login_create_new_account_button">Create New Account</string>
     <!--Register strings-->
     <string name="edit_text_name_register_hint">Name</string>
     <string name="edit_text_address_register_hint">Address</string>
@@ -28,6 +30,11 @@
     <!--welcome strings-->
     <string name="text_view_need_new_account_welcome">Create New Account</string>
     <string name="text_view_welcome">Welcome</string>
+    <!--notification strings -->
+    <string name="landing_activity">LandingActivity</string>
+    <string name="display_notification">Display Notification</string>
+
+
 
 
 </resources>

@@ -12,7 +12,12 @@
         <activity android:name=".welcomeActivity"></activity>
         <activity android:name=".registerActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".LandingActivity"/>
+        <activity android:name=".NotificationActivity"/>
+        <activity android:name=".NoActivity"/>
+        <activity android:name=".yesActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
