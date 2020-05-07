@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Pharma</string>
-
     <!--.......................................................-->
     <!--main Activity strings-->
     <string name="edit_text_presc_hint">Type the Medicines you want </string>
@@ -31,10 +30,4 @@
     <string name="text_view_need_new_account_welcome">Create New Account</string>
     <string name="text_view_welcome">Welcome</string>
     <!--notification strings -->
-    <string name="landing_activity">LandingActivity</string>
-    <string name="display_notification">Display Notification</string>
-
-
-
-
 </resources>
