@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/AppBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="@color/AppBackground"/>
+            android:background="@color/AppBackground" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/white"/>
+            android:background="@android:color/white" />
 
 
     </LinearLayout>
@@ -31,15 +32,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-       <!-- <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent" />-->
+        <!-- <com.google.android.material.appbar.AppBarLayout
+             android:id="@+id/app_bar_layout"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
+         <androidx.appcompat.widget.Toolbar
+             android:id="@+id/toolbar"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@android:color/transparent" />-->
 
 
         <TextView
@@ -53,8 +54,7 @@
             android:text="@string/enter_order"
             android:textColor="@android:color/white"
             android:textSize="25sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -68,11 +68,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="64dp">
 
                     <EditText
                         android:id="@+id/text_view_Presc"
@@ -98,26 +99,42 @@
                         android:textColor="@android:color/white" />
 
                     <EditText
-                        android:id="@+id/text-add"
+                        android:id="@+id/e1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:hint="@string/edit_text_address_hint"
-                        android:lines="1"
+                        android:lines="3"
                         android:scrollbars="vertical" />
 
                     <Button
+                        android:id="@+id/bt_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:text="@string/button_map"
                         android:textColor="#092BE6" />
 
+                    <TextView
+                        android:id="@+id/cname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/Address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/locality"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
 
         <Button
+            android:id="@+id/button_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -125,11 +142,8 @@
             android:background="@drawable/confirm_button"
             android:padding="16dp"
             android:text="@string/button_confirm"
-            android:textColor="@android:color/white"
-            android:id="@+id/button_confirm"/>
+            android:textColor="@android:color/white" />
     </LinearLayout>
-
-
 
 
     <!--

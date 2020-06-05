@@ -8,7 +8,7 @@
     <!--Buttons-->
     <string name="button_upload">OR Upload Prescription</string>
     <string name="button_confirm">Confirm Order</string>
-    <string name="button_map">Browse the map to set your Location</string>
+    <string name="button_map">Get Location</string>
     <string name="register">REGISTER</string>
     <!--login strings-->
     <string name="login">Login</string>
