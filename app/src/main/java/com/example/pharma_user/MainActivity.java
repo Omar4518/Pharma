@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.QuickContactBadge;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.pharma_user.Medicine.DrugsActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     TextView  textView2, textView3;
     EditText editText;
     FusedLocationProviderClient fusedLocationProviderClient;
+    private Button uploadPrescriptionButton;  //___________________________________________________
 
 
     @Override
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.e1);
         textView2 = findViewById(R.id.locality);
         textView3 = findViewById(R.id.cname);
+
+
 
         //intialize fusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -89,6 +92,21 @@ public class MainActivity extends AppCompatActivity {
                 sendData();
             }
         });
+
+
+        uploadPrescriptionButton = (Button) findViewById( R.id.upload_perscription_btn );//___________________________
+        uploadPrescriptionButton.setOnClickListener( new View.OnClickListener() {//_________________________________________
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DrugsActivity.class);
+                startActivity( intent);
+            }
+        } );
+
+
+
+
+
     }
 
     private void getLocation() {
@@ -166,10 +184,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendData() {
-        TextView textViewMedicine = findViewById(R.id.text_view_Presc);
-        final String Med = textViewMedicine.getText().toString();
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-
+       TextView textViewMedicine = findViewById(R.id.text_view_Presc); // ___XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX اى يبنى ده
+        final String Med = textViewMedicine.getText().toString();reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override//basagl elorders felfirebase
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -205,4 +221,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }
+
