@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseUser currentUser;
     private Button LoginButton,CreateNewAccountButton;
     private EditText UserEmail, UserPassword;
     private TextView ForgetPasswordLink;
@@ -33,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();//ba5od elemail w elpass eli 3andy w ashof homa mogodin wla la w 23ml login
 
 
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
@@ -92,10 +90,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void SendUserToMainActivity() {
-        Intent loginIntent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(loginIntent);
-
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
     }
+
     private void InitializeFields() {//t3ref eli mogod feldesign
         LoginButton = (Button) findViewById(R.id.login_button);
         CreateNewAccountButton=(Button) findViewById(R.id.login_create_new_account_button);

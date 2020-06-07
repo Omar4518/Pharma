@@ -21,8 +21,8 @@
     <!--Register strings-->
     <string name="edit_text_name_register_hint">Name</string>
     <string name="edit_text_address_register_hint">Address</string>
+    <string name="text_phone_register">Phone</string>
     <string name="edit_text_register">Register</string>
-    <string name="edit_text_phone_register">Phone</string>
     <string name="edit_text_email_register">Email</string>
     <string name="edit_text_Password_register">Password</string>
     <string name="button_register">Create Account</string>
@@ -30,4 +30,10 @@
     <string name="text_view_need_new_account_welcome">Create New Account</string>
     <string name="text_view_welcome">Welcome</string>
     <!--notification strings -->
+    <!--phone authentication -->
+    <string name="phone_number_input">Phone</string>
+    <string name="code_input">Verification Code</string>
+    <string name="send_verification_code_button">Send Verification Code</string>
+    <string name="verify_button">verify</string>
+
 </resources>

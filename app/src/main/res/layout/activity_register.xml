@@ -82,13 +82,13 @@
                     android:padding="16dp"
                     />
                 <EditText
-                    android:id="@+id/text_view_phone_register"
+                    android:id="@+id/text_phone_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_phone_register"
+                    android:hint="@string/text_phone_register"
                     android:padding="16dp"
-                    android:inputType="phone"
-                   />
+                    />
+
                 <EditText
                     android:id="@+id/text_view_email_register"
                     android:layout_width="match_parent"
