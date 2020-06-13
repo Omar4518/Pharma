@@ -8,7 +8,6 @@
     android:background="#FF5722"
     tools:context=".PrescriptionDetails">
 
-
     <androidx.cardview.widget.CardView
 
         android:id="@+id/cardView"
@@ -48,8 +47,6 @@
                     android:id="@+id/prescription_content"/>
 
             </ScrollView>
-
-
 
         </RelativeLayout>
 

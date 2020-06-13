@@ -14,6 +14,7 @@ public class PrescriptionDetails extends AppCompatActivity {
     TextView textView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -26,8 +27,6 @@ public class PrescriptionDetails extends AppCompatActivity {
         String data= extras.getString( "data" );
 
         textView.setText( data );
-
-
 
 
 

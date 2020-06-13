@@ -1,5 +1,6 @@
 package com.example.pharma_user.Medicine;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrugsActivity extends AppCompatActivity {
+
+
 
     private ListView listView;
     private ArrayAdapter adapter;
@@ -57,7 +60,6 @@ public class DrugsActivity extends AppCompatActivity {
         drugsList.add( "Ativan" );
         drugsList.add( "Baclofen" );
         drugsList.add( "Bydureon" );
-        drugsList.add( "Zantac" );
         drugsList.add( "Paroxetine" );
         drugsList.add( "Pradaxa" );
         drugsList.add( "Yervoy" );
@@ -144,9 +146,13 @@ public class DrugsActivity extends AppCompatActivity {
             items+="-"+item+"\n";
 
         }
-        Intent intent = new Intent( DrugsActivity.this  , PrescriptionDetails.class );
-        intent.putExtra( "data" , items);
-        startActivity( intent );
+      //  Intent intent = new Intent( DrugsActivity.this  , PrescriptionDetails.class );
+       // intent.putExtra( "data" , items);
+     //   startActivity( intent );
+        Intent returnIntent = getIntent();
+        returnIntent.putExtra( "returnData" , items );
+        setResult( RESULT_OK , returnIntent );
+        finish();
 
     }
 

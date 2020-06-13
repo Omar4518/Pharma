@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -39,6 +40,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    private final int REQUEST_CODE = 1; //0000000000000000000
+
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();//34an 23rf eldatabase
@@ -81,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         mAuth = FirebaseAuth.getInstance();//34an agib elemial eli 3aml login w ad5ol bih b3d ellogin
         currentUser = mAuth.getCurrentUser();
 
@@ -99,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DrugsActivity.class);
-                startActivity( intent);
+               startActivityForResult( intent , REQUEST_CODE );  //000000000000000000000000000000000000000000000
 
             }
         } );
@@ -109,6 +112,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //0000000000000000000000
+        if (requestCode == REQUEST_CODE)
+        {
+            if (resultCode==RESULT_OK)
+            {
+                String result = data.getStringExtra( "returnData" );
+                EditText editText = (EditText) findViewById( R.id.text_view_Presc );
+                editText.setText( result );
+            }
+        }        super.onActivityResult( requestCode, resultCode, data );
+    }
+
 
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
