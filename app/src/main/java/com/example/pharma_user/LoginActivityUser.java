@@ -28,20 +28,15 @@ public class LoginActivityUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
+        mAuth = FirebaseAuth.getInstance();
+        InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
 
         ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivityUser.this,ForgetPaswwordUserActivity.class));
+                startActivity(new Intent(LoginActivityUser.this,ForgetPasswordUserActivity.class));
             }
         });
-
-
-        mAuth = FirebaseAuth.getInstance();
-
-
-        InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
-
         CreateNewAccountButtonUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
