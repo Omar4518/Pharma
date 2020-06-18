@@ -15,14 +15,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ForgetPaswwordUserActivity extends AppCompatActivity {
+public class ForgetPasswordUserActivity extends AppCompatActivity {
     private EditText userEmail;
     private Button sendEmail;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forget_paswword_user);
+        setContentView(R.layout.activity_forget_password_user);
 
         userEmail = findViewById(R.id.e1);
         sendEmail = findViewById(R.id.b1);
@@ -32,20 +32,20 @@ public class ForgetPaswwordUserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = userEmail.getText().toString();
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(ForgetPaswwordUserActivity.this, "please enter your email", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ForgetPasswordUserActivity.this, "please enter your email", Toast.LENGTH_LONG).show();
                 } else {
                     mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful())
                             {
-                                Toast.makeText(ForgetPaswwordUserActivity.this, "please visit your email to reset your pass ", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(ForgetPaswwordUserActivity.this,LoginActivityUser.class));
+                                Toast.makeText(ForgetPasswordUserActivity.this, "please visit your email to reset your pass ", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(ForgetPasswordUserActivity.this,LoginActivityUser.class));
                             }
                             else
                             {
                                 String message =task.getException().getMessage();
-                                Toast.makeText(ForgetPaswwordUserActivity.this, "Error", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ForgetPasswordUserActivity.this, "Error", Toast.LENGTH_LONG).show();
 
                             }
                         }
