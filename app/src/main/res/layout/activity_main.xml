@@ -87,7 +87,7 @@
                         android:scrollbars="vertical" />
 
                     <Button
-                        android:id="@+id/upload_perscription_btn"
+                        android:id="@+id/choose_medicine_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="start"
@@ -108,11 +108,11 @@
                         android:scrollbars="vertical" />
 
                     <Button
-                        android:id="@+id/bt_id"
+                        android:id="@+id/bt_upload_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:text="@string/button_map"
+                        android:text="@string/bt_upload_image"
                         android:textColor="#092BE6" />
 
                     <TextView
@@ -134,14 +134,14 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/button_confirm"
+            android:id="@+id/button_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="36dp"
             android:background="@drawable/confirm_button"
             android:padding="16dp"
-            android:text="@string/button_confirm"
+            android:text="@string/button_next"
             android:textColor="@android:color/white" />
     </LinearLayout>
 

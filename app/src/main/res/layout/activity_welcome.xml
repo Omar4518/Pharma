@@ -22,29 +22,30 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/login_button_welcome"
+        android:id="@+id/login_button_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/text_welcome"
         android:layout_marginLeft="19dp"
+        android:layout_marginTop="250dp"
         android:layout_marginRight="19dp"
         android:background="@drawable/buttons"
-        android:text="@string/button_login"
-        android:layout_marginTop="250dp"
-        android:layout_below="@id/text_welcome"
+        android:text="@string/button_login_user"
         android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
-    <TextView
-        android:layout_alignParentBottom="true"
-        android:id="@+id/create_new_account_link_welcome"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/login_button_pharma"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_centerInParent="true"
-        android:text="@string/text_view_need_new_account_welcome"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/login_button_user"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:background="@drawable/buttons"
+        android:text="@string/button_login_pharma"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp" />
 
 
 </RelativeLayout>

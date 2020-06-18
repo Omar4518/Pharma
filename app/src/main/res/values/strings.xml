@@ -5,35 +5,68 @@
     <string name="edit_text_presc_hint">Type the Medicines you want </string>
     <string name="edit_text_address_hint">Address</string>
     <string name="enter_order">put your order Here</string>
+    <string name="bt_upload_image">Or Upload Prescription</string>
+
+
     <!--Buttons-->
-    <string name="button_upload">OR Upload Prescription</string>
-    <string name="button_confirm">Confirm Order</string>
-    <string name="button_map">Get Location</string>
+    <string name="button_upload">Choose Medicines</string>
+    <string name="button_next">Next</string>
     <string name="register">REGISTER</string>
-    <!--login strings-->
-    <string name="login">Login</string>
-    <string name="edit_text_email_login_hint">Email</string>
-    <string name="edit_text_password_login_hint">password</string>
-    <string name="text_view_forget_password">Forget Password?</string>
-    <string name="button_login">Login</string>
-    <string name="text_or">Or</string>
-    <string name="login_create_new_account_button">Create New Account</string>
-    <!--Register strings-->
-    <string name="edit_text_name_register_hint">Name</string>
-    <string name="edit_text_address_register_hint">Address</string>
-    <string name="text_phone_register">Phone</string>
-    <string name="edit_text_register">Register</string>
-    <string name="edit_text_email_register">Email</string>
-    <string name="edit_text_Password_register">Password</string>
-    <string name="button_register">Create Account</string>
+    <!--login user strings-->
+    <string name="login_user">Login</string>
+    <string name="edit_text_email_login_hint_user">Email</string>
+    <string name="edit_text_password_login_hint_user">password</string>
+    <string name="text_view_forget_password_user">Forget Password?</string>
+    <string name="text_or_user">Or</string>
+    <string name="login_create_new_account_button_user">Create New Account</string>
+    <string name="login_button_user">Login</string>
+    <!--login admin strings-->
+    <string name="login_admin">Login Admin</string>
+    <string name="edit_text_email_login_hint_admin">Email</string>
+    <string name="edit_text_password_login_hint_admin">password</string>
+    <string name="text_view_forget_password_admin">Forget Password?</string>
+    <string name="text_or_admin">Or</string>
+    <string name="login_create_new_account_button_admin">Create New Account</string>
+    <string name="login_button_admin">Login</string>
+    <!--Register User strings-->
+    <string name="edit_text_name_register_hint_user">Name</string>
+    <string name="edit_text_address_register_hint_user">Address</string>
+    <string name="text_phone_register_user">Phone</string>
+    <string name="edit_text_register_user">Register</string>
+    <string name="edit_text_email_register_user">Email</string>
+    <string name="edit_text_Password_register_user">Password</string>
+    <string name="button_register_user">Create Account</string>
+    <!--Register Admin strings-->
+    <string name="edit_text_name_register_hint_admin">Name</string>
+    <string name="edit_text_address_register_hint_admin">Address</string>
+    <string name="text_phone_register_admin">Phone</string>
+    <string name="edit_text_register_admin">Register Admin</string>
+    <string name="edit_text_email_register_admin">Email</string>
+    <string name="edit_text_Password_register_admin">Password</string>
+    <string name="button_register_admin">Create Account</string>
     <!--welcome strings-->
-    <string name="text_view_need_new_account_welcome">Create New Account</string>
+    <string name="button_login_pharma">Pharma Login</string>
     <string name="text_view_welcome">Welcome</string>
+    <string name="button_login_user">User Login</string>
     <!--notification strings -->
     <!--phone authentication -->
     <string name="phone_number_input">Phone</string>
     <string name="code_input">Verification Code</string>
     <string name="send_verification_code_button">Send Verification Code</string>
     <string name="verify_button">verify</string>
+    <!-- menu admin-->
+    <string name="main_logout_options_admin">Logout</string>
+    <!-- menu user-->
+    <string name="main_logout_options_user">Logout</string>
+    <!-- Address activity strings-->
+    <string name="edit_text_address_user">Address</string>
+    <string name="edit_text_local_user">Local</string>
+    <string name="edit_text_country">Country</string>
+    <string name="text_view_build_no">Building Number: </string>
+    <string name="text_view_floor_no">Floor Number: </string>
+    <string name="text_view_apartment_no">Apartment Number: </string>
+    <string name="button_location">get location</string>
+    <string name="text_view_title_address">Address</string>
+
 
 </resources>

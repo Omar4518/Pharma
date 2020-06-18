@@ -42,7 +42,7 @@
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="15"
-            android:text="@string/edit_text_register"
+            android:text="@string/edit_text_register_user"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -67,41 +67,41 @@
 
 
                 <EditText
-                    android:id="@+id/text_view_name_register"
+                    android:id="@+id/text_view_name_register_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_name_register_hint"
+                    android:hint="@string/edit_text_name_register_hint_user"
                     android:padding="16dp"
                     android:inputType="textPersonName"
                     />
                 <EditText
-                    android:id="@+id/text_address_register"
+                    android:id="@+id/text_address_register_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_address_register_hint"
+                    android:hint="@string/edit_text_address_register_hint_user"
                     android:padding="16dp"
                     />
                 <EditText
-                    android:id="@+id/text_phone_register"
+                    android:id="@+id/text_phone_register_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/text_phone_register"
+                    android:hint="@string/text_phone_register_user"
                     android:padding="16dp"
                     />
 
                 <EditText
-                    android:id="@+id/text_view_email_register"
+                    android:id="@+id/text_view_email_register_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_email_register"
+                    android:hint="@string/edit_text_email_register_user"
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
                     />
                 <EditText
-                    android:id="@+id/text_view_password_register"
+                    android:id="@+id/text_view_password_register_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/edit_text_Password_register"
+                    android:hint="@string/edit_text_Password_register_user"
                     android:inputType="textPassword"
                     android:padding="16dp"
                     />
@@ -117,9 +117,9 @@
             android:layout_marginBottom="36dp"
             android:background="@drawable/confirm_button"
             android:padding="16dp"
-            android:text="@string/button_register"
+            android:text="@string/button_register_user"
             android:textColor="@android:color/white"
-            android:id="@+id/button_register"/>
+            android:id="@+id/button_register_user"/>
     </LinearLayout>
 
 

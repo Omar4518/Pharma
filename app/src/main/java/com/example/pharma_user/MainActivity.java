@@ -7,6 +7,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,70 +48,41 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();//34an 23rf eldatabase
     final DatabaseReference reference = database.getReference();
-    Button btlocation;
-    TextView  textView2, textView3;
-    EditText editText;
-    FusedLocationProviderClient fusedLocationProviderClient;
-    private Button uploadPrescriptionButton;  //___________________________________________________
+    private Button chosseMedicineButton;  //___________________________________________________
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //assign variable
-        btlocation = findViewById(R.id.bt_id);
-        editText = findViewById(R.id.e1);
-        textView2 = findViewById(R.id.locality);
-        textView3 = findViewById(R.id.cname);
-
-
-
-        //intialize fusedLocationProviderClient
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        btlocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //check permission
-                if (ActivityCompat.checkSelfPermission(MainActivity.this
-                        , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    //when permission granted
-                    getLocation();
-                } else {
-                    //when permission denied
-                    ActivityCompat.requestPermissions(MainActivity.this
-                            , new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-
-                }
-            }
-        });
-
         mAuth = FirebaseAuth.getInstance();//34an agib elemial eli 3aml login w ad5ol bih b3d ellogin
         currentUser = mAuth.getCurrentUser();
 
-        Button buttonConfirm = findViewById(R.id.button_confirm);
-        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+        Button buttonNext = findViewById(R.id.button_next);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SendUserToAddressActivity();
                 sendData();
             }
         });
 
 
-        uploadPrescriptionButton = (Button) findViewById( R.id.upload_perscription_btn );//___________________________
-        uploadPrescriptionButton.setOnClickListener( new View.OnClickListener() {//_________________________________________
+        chosseMedicineButton = (Button) findViewById( R.id.choose_medicine_btn);//___________________________
+        chosseMedicineButton.setOnClickListener( new View.OnClickListener() {//_________________________________________
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DrugsActivity.class);
-               startActivityForResult( intent , REQUEST_CODE );  //000000000000000000000000000000000000000000000
+                startActivityForResult( intent , REQUEST_CODE );  //000000000000000000000000000000000000000000000
 
             }
         } );
 
+    }
 
-
-
-
+    private void SendUserToAddressActivity() {
+        Intent addressIntent = new Intent(MainActivity.this, AddressActivity.class);
+        startActivity(addressIntent);
     }
 
     @Override
@@ -127,83 +99,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void getLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                //initialize location
-                Location location = task.getResult();
-                if (location != null) {
-
-
-                    //initialize Address
-                    try {
-                        //initialize geocoder
-                        Geocoder geocoder = new Geocoder(MainActivity.this
-                                , Locale.getDefault());
-
-                        List<Address> addresses=geocoder.getFromLocation(
-                                location.getLatitude(),location.getLongitude(),1
-                        );
-
-                        //set country name
-                        textView3.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Country Name  :</b><br></font>"
-                                +addresses.get(0).getCountryName()
-                        ));
-
-                        //set locality
-                        textView2.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Locality  :</b><br></font>"
-                                        +addresses.get(0).getLocality()
-                        ));
-
-                        //set  Address
-                        editText.setText(Html.fromHtml(
-                                "<font color='#6200EE'><b>Address  :</b><br></font>"
-                                        +addresses.get(0).getAddressLine(0)
-                        ));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        });
-    }
 
     @Override//34an lw eluser msh 3aml login yt3lo 3la elwelcome activity
     protected void onStart() {
         super.onStart();
         if (currentUser == null) {
-            SendUserToWelcomeActivity();
+            SendUserToWelcomeUserActivity();
 
         }
     }
 
-    private void SendUserToWelcomeActivity() {
-        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+    private void SendUserToWelcomeUserActivity() {
+        Intent loginIntent = new Intent(MainActivity.this, LoginActivityUser.class);
         startActivity(loginIntent);
     }
 
-    private void SendUserToLoginActivity() {
-        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+    private void SendUserToLoginUserActivity() {
+        Intent loginIntent = new Intent(MainActivity.this, LoginActivityUser.class);
         startActivity(loginIntent);
     }
 
     public void sendData() {
-       TextView textViewMedicine = findViewById(R.id.text_view_Presc); // ___XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX اى يبنى ده
-        final String Med = textViewMedicine.getText().toString();reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        EditText editTextMedicine = findViewById(R.id.text_view_Presc); // ___XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX اى يبنى ده
+        final String Med = editTextMedicine.getText().toString();reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override//basagl elorders felfirebase
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -226,16 +144,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menus_options, menu);
+        getMenuInflater().inflate(R.menu.menus_options_user, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        if (item.getItemId() == R.id.main_logout_options) {
+        if (item.getItemId() == R.id.main_logout_options_user) {
             mAuth.signOut();
-            SendUserToLoginActivity();
+            SendUserToLoginUserActivity();
         }
         return true;
     }
