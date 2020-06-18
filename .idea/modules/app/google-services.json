@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "912049972836-gr7olqmnf46vrfkq7hu1cv7ttogepbbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pharma_user",
+            "certificate_hash": "82c8dca7a0a53342cb998824257b08a1e8307b0d"
+          }
+        },
+        {
           "client_id": "912049972836-6jatd8a143l5hdgjlh9m0rmsitc4bsga.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

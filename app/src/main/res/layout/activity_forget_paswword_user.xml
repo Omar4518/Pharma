@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/e1"
+        android:id="@+id/email1"
         android:hint="Enter Your Email"
         android:gravity="center"
         android:layout_marginTop="36dp"
@@ -17,7 +17,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/b1"
+        android:id="@+id/sendemail1"
         android:text="Send Email"
         android:layout_below="@id/e1"
         android:layout_marginTop="100dp"/>

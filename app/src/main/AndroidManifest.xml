@@ -13,9 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgetPaswwordUserActivity">
-
-        </activity>
+        <activity android:name=".ForgetPaswwordUserActivity"/>
         <activity android:name=".PharmacyAcvtivity" />
         <activity android:name=".AddressActivity" />
         <activity android:name=".MainActivityAdmin" />

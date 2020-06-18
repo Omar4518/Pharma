@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private Button loginButtonUser,loginButtonPharma;
+    private Button loginButtonUser,loginButtonAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,13 @@ public class WelcomeActivity extends AppCompatActivity {
         loginButtonUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendUserToLoginAdminActivity();
+                SendUserToLoginUserActivity();
             }
         });
-        loginButtonPharma.setOnClickListener(new View.OnClickListener() {
+        loginButtonAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendUserToLoginUserActivity();
+                SendUserToLoginAdminActivity();
             }
         });
     }
@@ -38,8 +38,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void InitializeFields() {
-        loginButtonPharma = (Button) findViewById(R.id.login_button_user);
-        loginButtonUser= (Button) findViewById(R.id.login_button_pharma);
+        loginButtonAdmin = (Button) findViewById(R.id.login_button_admin);
+        loginButtonUser= (Button) findViewById(R.id.login_button_user);
     }
 
     private void SendUserToLoginAdminActivity() {

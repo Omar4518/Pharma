@@ -24,8 +24,8 @@ public class ForgetPaswwordUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_paswword_user);
 
-        userEmail = findViewById(R.id.e1);
-        sendEmail = findViewById(R.id.b1);
+        userEmail = findViewById(R.id.email1);
+        sendEmail = findViewById(R.id.sendemail1);
         mAuth = FirebaseAuth.getInstance();
         sendEmail.setOnClickListener(new View.OnClickListener() {
             @Override

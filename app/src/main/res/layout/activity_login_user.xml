@@ -100,7 +100,18 @@
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
-
+                <Button
+                    android:id="@+id/login_button_user_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="19dp"
+                    android:background="@drawable/confirm_button"
+                    android:text="@string/login_button_user2"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp" />
                 <Button
                     android:id="@+id/login_button_user"
                     android:layout_width="match_parent"
