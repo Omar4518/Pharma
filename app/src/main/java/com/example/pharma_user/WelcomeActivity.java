@@ -33,8 +33,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void SendUserToLoginUserActivity() {
-        Intent registerIntent= new Intent(WelcomeActivity.this, LoginActivityUser.class);
-        startActivity(registerIntent);
+        Intent loginUserIntent= new Intent(WelcomeActivity.this, LoginActivityUser.class);
+        startActivity(loginUserIntent);
     }
 
     private void InitializeFields() {
@@ -43,7 +43,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void SendUserToLoginAdminActivity() {
-        Intent registerIntent= new Intent(WelcomeActivity.this, LoginAdminActivity.class);
-        startActivity(registerIntent);
+        Intent loginAdminIntent= new Intent(WelcomeActivity.this, LoginAdminActivity.class);
+        startActivity(loginAdminIntent);
     }
 }
