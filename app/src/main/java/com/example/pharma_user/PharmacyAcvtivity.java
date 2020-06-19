@@ -9,6 +9,6 @@ public class PharmacyAcvtivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pharmacy_acvtivity);
+        setContentView(R.layout.activity_pharmacy);
     }
 }

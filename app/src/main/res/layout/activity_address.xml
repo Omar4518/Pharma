@@ -75,6 +75,16 @@
                         android:scrollbars="vertical"
                         android:layout_marginTop="8dp"/>
 
+
+
+                    <EditText
+                        android:id="@+id/edit_text_local_user"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="@string/edit_text_local_user"
+                        android:layout_below="@id/edit_text_address_user"/>
                     <Button
                         android:id="@+id/button_location"
                         android:layout_width="wrap_content"
@@ -85,18 +95,9 @@
                         android:textAllCaps="false"
                         android:layout_marginTop="8dp"
                         android:padding="8dp"
-                        android:layout_below="@id/edit_text_local_user"
+                        android:layout_below="@id/edit_text_country"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/buttons"/>
-
-                    <EditText
-                        android:id="@+id/edit_text_local_user"
-                        android:layout_marginStart="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:hint="@string/edit_text_local_user"
-                        android:layout_below="@id/edit_text_address_user"/>
 
                     <EditText
                         android:layout_marginStart="8dp"
@@ -120,7 +121,7 @@
                         android:hint="@string/text_view_build_no"
                         android:padding="8dp"
                         android:id="@+id/text_view_build_no"
-                        android:layout_below="@id/edit_text_country"/>
+                        android:layout_below="@id/button_location"/>
 
                     <EditText
                         android:inputType="number"
@@ -131,7 +132,7 @@
                         android:padding="8dp"
                         android:id="@+id/edit_text_build_no"
                         android:layout_toEndOf="@id/text_view_build_no"
-                        android:layout_below="@id/edit_text_country"/>
+                        android:layout_below="@id/button_location"/>
                     <TextView
                         android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
