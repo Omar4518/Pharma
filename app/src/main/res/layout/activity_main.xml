@@ -98,22 +98,23 @@
                         android:text="@string/button_upload"
                         android:textColor="@android:color/white" />
 
-                    <EditText
-                        android:id="@+id/e1"
+
+                    <ImageView
+                        android:id="@+id/image_view"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:hint="@string/edit_text_address_hint"
-                        android:lines="3"
-                        android:scrollbars="vertical" />
+                        android:layout_height="115dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="32dp"
+                        android:scaleType="centerCrop" />
 
                     <Button
-                        android:id="@+id/bt_upload_image"
+                        android:id="@+id/bt_choose_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:text="@string/bt_upload_image"
                         android:textColor="#092BE6" />
+
 
                     <TextView
                         android:id="@+id/cname"

@@ -1,12 +1,17 @@
 package com.example.pharma_user;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.provider.Telephony;
 import android.text.Html;
 import android.view.Menu;
@@ -14,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.pharma_user.Medicine.DrugsActivity;
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,20 +42,31 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
     private final int REQUEST_CODE = 1; //0000000000000000000
-
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();//34an 23rf eldatabase
     final DatabaseReference reference = database.getReference();
-    private Button chosseMedicineButton;  //___________________________________________________
+    private Button chosseMedicineButton;
+    private Button btn_choose;
+    private ImageView imageView;
+    private Uri filePath;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
+    //___________________________________________________
 
 
     @Override
@@ -68,36 +86,79 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        chosseMedicineButton = (Button) findViewById( R.id.choose_medicine_btn);//___________________________
-        chosseMedicineButton.setOnClickListener( new View.OnClickListener() {//_________________________________________
+        chosseMedicineButton = (Button) findViewById(R.id.choose_medicine_btn);//___________________________
+        chosseMedicineButton.setOnClickListener(new View.OnClickListener() {//_________________________________________
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DrugsActivity.class);
-                startActivityForResult( intent , REQUEST_CODE );  //000000000000000000000000000000000000000000000
+                startActivityForResult(intent, REQUEST_CODE);  //000000000000000000000000000000000000000000000
 
             }
-        } );
+        });
+
+
+        // Photo0o0o0o0o0o0o
+        btn_choose = findViewById(R.id.bt_choose_image);
+        imageView = findViewById(R.id.image_view);
+
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+
+        btn_choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+            }
+        });
+
 
     }
+
+    //photo
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Image"), 1);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+////////////////////////////////////////////////
+
 
     private void SendUserToAddressActivity() {
         Intent addressIntent = new Intent(MainActivity.this, AddressActivity.class);
         startActivity(addressIntent);
     }
 
-    @Override
+  /*  @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //0000000000000000000000
-        if (requestCode == REQUEST_CODE)
-        {
-            if (resultCode==RESULT_OK)
-            {
-                String result = data.getStringExtra( "returnData" );
-                EditText editText = (EditText) findViewById( R.id.text_view_Presc );
-                editText.setText( result );
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                String result = data.getStringExtra("returnData");
+                EditText editText = (EditText) findViewById(R.id.text_view_Presc);
+                editText.setText(result);
             }
-        }        super.onActivityResult( requestCode, resultCode, data );
-    }
-
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }*/
 
 
     @Override//34an lw eluser msh 3aml login yt3lo 3la elwelcome activity
@@ -119,9 +180,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(loginIntent);
     }
 
+
     public void sendData() {
         EditText editTextMedicine = findViewById(R.id.text_view_Presc); // ___XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX اى يبنى ده
-        final String Med = editTextMedicine.getText().toString();reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        final String Med = editTextMedicine.getText().toString();
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override//basagl elorders felfirebase
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -139,6 +202,30 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        if (filePath != null) {
+
+
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Uploding......");
+            progressDialog.show();
+
+
+            StorageReference reference = storageReference.child("images/" + UUID.randomUUID().toString());
+            reference.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    progressDialog.dismiss();
+                    Toast.makeText(MainActivity.this, "Image Uploded", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                    double progres = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    progressDialog.setMessage("Uplodeed " + (int) progres + " % ");
+                }
+            });
+        }
     }
 
     @Override

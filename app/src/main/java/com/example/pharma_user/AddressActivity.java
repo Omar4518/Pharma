@@ -34,7 +34,7 @@ public class AddressActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
         InitializeFields();
-        buttonNext .setOnClickListener(new View.OnClickListener() {
+        buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendUserToPharmacyActivity();
@@ -63,7 +63,7 @@ public class AddressActivity extends AppCompatActivity {
     }
 
     private void SendUserToPharmacyActivity() {
-        Intent pharmaIntent = new Intent(AddressActivity.this,PharmacyAcvtivity.class);
+        Intent pharmaIntent = new Intent(AddressActivity.this,ChoosePharmacy.class);
         startActivity(pharmaIntent);
     }
 

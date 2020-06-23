@@ -6,4 +6,6 @@
     <color name="confirmButton">#FFC107</color>
     <color name="welcomeText">#FFFFFF</color>
     <color name="AppBackground">#FFE0B2</color>
+    <color name="ButtonAccept">#03FF0D</color>
+    <color name="ButtonDeny">#FD0320</color>
 </resources>
