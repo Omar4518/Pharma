@@ -2,7 +2,6 @@ package com.example.pharma_user;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -33,15 +32,16 @@ public class LoginActivityUser extends AppCompatActivity {
     private TextView ForgetPasswordLinkUser,CreateNewAccountLinkUser;
     private ProgressDialog loadingBar;
     private FirebaseAuth mAuth;
-    private Button ButtonGoogle;
     GoogleSignInClient mGoogleSignInClient;
+    SignInButton ButtonGoogle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
-        mAuth = FirebaseAuth.getInstance();
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
+        mAuth = FirebaseAuth.getInstance();
         ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,8 +58,13 @@ public class LoginActivityUser extends AppCompatActivity {
         ButtonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
-            }
+                switch (v.getId()) {
+                    case R.id.login_button_user_google:
+                        signIn();
+                        break;
+                    // ...
+                }
+                }
         });
 
 
@@ -191,7 +196,7 @@ public class LoginActivityUser extends AppCompatActivity {
 
     private void InitializeFields() {//t3ref eli mogod feldesign
         LoginButtonUser = (Button) findViewById(R.id.login_button_user);
-        ButtonGoogle = findViewById(R.id.login_button_user_google);
+        ButtonGoogle = (SignInButton) findViewById(R.id.login_button_user_google);
         CreateNewAccountLinkUser = (TextView) findViewById(R.id.login_create_new_account_text_user);
         UserEmailUser = (EditText) findViewById(R.id.login_email_user);
         UserPasswordUser = (EditText) findViewById(R.id.login_password_user);
