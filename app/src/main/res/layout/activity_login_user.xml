@@ -100,18 +100,18 @@
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
-                <Button
+                <com.google.android.gms.common.SignInButton
                     android:id="@+id/login_button_user_google"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="19dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="19dp"
-                    android:background="@drawable/confirm_button"
                     android:text="@string/login_button_user2"
                     android:textAllCaps="false"
                     android:textColor="@android:color/background_light"
                     android:textSize="24sp" />
+
                 <Button
                     android:id="@+id/login_button_user"
                     android:layout_width="match_parent"
@@ -138,17 +138,16 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/login_create_new_account_button_user"
+                <TextView
+                    android:id="@+id/login_create_new_account_text_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="19dp"
                     android:layout_marginRight="19dp"
-                    android:background="@drawable/confirm_button"
-                    android:text="@string/login_create_new_account_button_user"
+                    android:text="@string/login_create_new_account_text_user"
                     android:textAllCaps="false"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"/>
 
 
             </LinearLayout>

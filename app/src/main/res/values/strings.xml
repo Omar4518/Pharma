@@ -32,7 +32,7 @@
     <string name="edit_text_password_login_hint_user">password</string>
     <string name="text_view_forget_password_user">Forget Password?</string>
     <string name="text_or_user">Or</string>
-    <string name="login_create_new_account_button_user">Create New Account</string>
+    <string name="login_create_new_account_text_user">Create New Account</string>
     <string name="login_button_user">Login</string>
     <string name="login_button_user2">Login Google</string>
     <!--login admin strings-->

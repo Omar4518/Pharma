@@ -28,12 +28,12 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivityUser extends AppCompatActivity {
     private static final int RC_SIGN_IN = 101;
-    private Button LoginButtonUser, CreateNewAccountButtonUser;
+    private Button LoginButtonUser;
     private EditText UserEmailUser, UserPasswordUser;
-    private TextView ForgetPasswordLinkUser;
+    private TextView ForgetPasswordLinkUser,CreateNewAccountLinkUser;
     private ProgressDialog loadingBar;
     private FirebaseAuth mAuth;
-    private Button btngoogle;
+    private Button ButtonGoogle;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -41,9 +41,6 @@ public class LoginActivityUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_user);
         mAuth = FirebaseAuth.getInstance();
-        btngoogle = findViewById(R.id.login_button_user_google);
-
-
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
         ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +55,7 @@ public class LoginActivityUser extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        btngoogle.setOnClickListener(new View.OnClickListener() {
+        ButtonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
@@ -66,7 +63,7 @@ public class LoginActivityUser extends AppCompatActivity {
         });
 
 
-        CreateNewAccountButtonUser.setOnClickListener(new View.OnClickListener() {
+        CreateNewAccountLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendUserToRegisterUserActivity();
@@ -129,6 +126,7 @@ public class LoginActivityUser extends AppCompatActivity {
                 });
     }
 
+
     private void updateUI(FirebaseUser user) {
         Intent intent = new Intent(LoginActivityUser.this, MainActivity.class);
         startActivity(intent);
@@ -141,20 +139,26 @@ public class LoginActivityUser extends AppCompatActivity {
         startActivity(registerIntent);
     }
 
-    private void AllowUserToLogin()//elmetod eli bt3ml login
+    private boolean AllowUserToLogin()//elmetod eli bt3ml login
     {
         String userEmail = UserEmailUser.getText().toString();
         String userPassword = UserPasswordUser.getText().toString();
 
-        if (TextUtils.isEmpty(userEmail))//lw sab mkan elemail fady y2olo ektb email
+        if (userEmail.isEmpty())//lw sab mkan elemail fady y2olo ektb email
         {
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
         }
 
-        if (TextUtils.isEmpty(userPassword))//lw sab mkan elpass fady y2olo ektb elpass
+        else if (userPassword.isEmpty())//lw sab mkan elpass fady y2olo ektb elpass
         {
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else if(userEmail.endsWith(".com")!= true || userEmail.contains("@")!= true)
+        {
+            Toast.makeText(getApplicationContext(),"please valid E-mail",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
             loadingBar.setTitle("Sign In");
             loadingBar.setMessage("please wait");
             loadingBar.setCanceledOnTouchOutside(false);
@@ -176,6 +180,7 @@ public class LoginActivityUser extends AppCompatActivity {
                         }
                     });
         }
+        return true;
     }
 
     private void SendUserToMainUserActivity() {
@@ -186,7 +191,8 @@ public class LoginActivityUser extends AppCompatActivity {
 
     private void InitializeFields() {//t3ref eli mogod feldesign
         LoginButtonUser = (Button) findViewById(R.id.login_button_user);
-        CreateNewAccountButtonUser = (Button) findViewById(R.id.login_create_new_account_button_user);
+        ButtonGoogle = findViewById(R.id.login_button_user_google);
+        CreateNewAccountLinkUser = (TextView) findViewById(R.id.login_create_new_account_text_user);
         UserEmailUser = (EditText) findViewById(R.id.login_email_user);
         UserPasswordUser = (EditText) findViewById(R.id.login_password_user);
         ForgetPasswordLinkUser = (TextView) findViewById(R.id.forget_password_link_login_user);
