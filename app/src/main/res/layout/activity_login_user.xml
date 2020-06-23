@@ -59,9 +59,9 @@
             app:cardElevation="10dp">
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
@@ -80,6 +80,7 @@
                 <EditText
                     android:id="@+id/login_password_user"
                     android:layout_width="match_parent"
+                    android:layout_below="@id/login_email_user"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dp"
                     android:layout_marginTop="25dp"
@@ -93,25 +94,13 @@
                     android:id="@+id/forget_password_link_login_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/login_password_user"
                     android:layout_marginTop="17dp"
                     android:text="@string/text_view_forget_password_user"
                     android:textAlignment="textEnd"
                     android:textColor="@color/colorPrimary"
                     android:textSize="17sp"
                     android:textStyle="bold" />
-
-                <com.google.android.gms.common.SignInButton
-                    android:id="@+id/login_button_user_google"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="19dp"
-                    android:text="@string/login_button_user2"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="24sp" />
-
                 <Button
                     android:id="@+id/login_button_user"
                     android:layout_width="match_parent"
@@ -123,20 +112,39 @@
                     android:text="@string/login_button_user"
                     android:textAllCaps="false"
                     android:textColor="@android:color/background_light"
+                    android:textSize="24sp"
+                    android:layout_below="@id/forget_password_link_login_user"/>
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/login_button_user_google"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/text_or"
+                    android:text="@string/login_button_user2"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/background_light"
                     android:textSize="24sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="19dp"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:shadowRadius="15"
+                    android:layout_marginTop="16dp"
                     android:text="@string/text_or_user"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_below="@id/login_button_user"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/text_or"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_dont_have_account"
+                    android:layout_below="@id/login_button_user_google"
+                    android:text="@string/text_dont_have_account"
+                    android:layout_marginTop="8dp"/>
 
                 <TextView
                     android:id="@+id/login_create_new_account_text_user"
@@ -147,10 +155,13 @@
                     android:text="@string/login_create_new_account_text_user"
                     android:textAllCaps="false"
                     android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_below="@id/login_button_user_google"
+                    android:layout_toEndOf="@id/text_dont_have_account"
+                    android:layout_marginTop="8dp"/>
 
 
-            </LinearLayout>
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
 

@@ -35,6 +35,7 @@
     <string name="login_create_new_account_text_user">Create New Account</string>
     <string name="login_button_user">Login</string>
     <string name="login_button_user2">Login Google</string>
+    <string name="text_dont_have_account">Dont have account? </string>
     <!--login admin strings-->
     <string name="login_admin">Login Admin</string>
     <string name="edit_text_email_login_hint_admin">Email</string>
