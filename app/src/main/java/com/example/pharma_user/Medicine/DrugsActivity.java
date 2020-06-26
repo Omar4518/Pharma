@@ -13,14 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.pharma_user.PrescriptionDetails;
 import com.example.pharma_user.R;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +75,7 @@ public class DrugsActivity extends AppCompatActivity {
         drugsList.add( "Vitamin D" );
         drugsList.add( "Valsartan" );
 
-         adapter = new ArrayAdapter<>(this,R.layout.row_layout , R.id.txt_lan , drugsList);
+         adapter = new ArrayAdapter<>(this,R.layout.row_layout,R.id.txt_lan,drugsList);
         listView.setAdapter( adapter );
 
 

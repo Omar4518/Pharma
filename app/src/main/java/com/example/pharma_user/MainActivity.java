@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import androidx.annotation.Nullable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -59,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();//34an 23rf eldatabase
     final DatabaseReference reference = database.getReference();
-    private Button chosseMedicineButton;
-    private Button btn_choose;
+    private Button chooseMedicineButton,btn_choose;
     private ImageView imageView;
     private Uri filePath;
     private FirebaseStorage storage;
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        chosseMedicineButton = (Button) findViewById(R.id.choose_medicine_btn);//___________________________
-        chosseMedicineButton.setOnClickListener(new View.OnClickListener() {//_________________________________________
+        chooseMedicineButton = (Button) findViewById(R.id.choose_medicine_btn);//___________________________
+        chooseMedicineButton.setOnClickListener(new View.OnClickListener() {//_________________________________________
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DrugsActivity.class);
@@ -125,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            filePath = data.getData();
+   /* @Override
+    protected void onActivityResult(int requestCodee, int resultCodee, @Nullable Intent dataa) {
+        super.onActivityResult(requestCodee, resultCodee, dataa);
+        if (requestCodee == 1 && resultCodee == RESULT_OK && dataa != null && dataa.getData() != null) {
+            filePath = dataa.getData();
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
@@ -139,8 +139,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-    }
-////////////////////////////////////////////////
+    }*/
 
 
     private void SendUserToAddressActivity() {
@@ -148,17 +147,28 @@ public class MainActivity extends AppCompatActivity {
         startActivity(addressIntent);
     }
 
-  /*  @Override
+   @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //0000000000000000000000
-        if (requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                String result = data.getStringExtra("returnData");
-                EditText editText = (EditText) findViewById(R.id.text_view_Presc);
-                editText.setText(result);
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }*/
+       if (requestCode == REQUEST_CODE) {
+           if (resultCode == RESULT_OK) {
+               String result = data.getStringExtra("returnData");
+               EditText editText = (EditText) findViewById(R.id.text_view_Presc);
+               editText.setText(result);
+           }
+
+       }
+       if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+           filePath = data.getData();
+
+           try {
+               Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+               imageView.setImageBitmap(bitmap);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+           super.onActivityResult(requestCode, resultCode, data);
+       }
+   }
 
 
     @Override//34an lw eluser msh 3aml login yt3lo 3la elwelcome activity

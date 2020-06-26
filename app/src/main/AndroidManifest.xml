@@ -20,7 +20,6 @@
         <activity android:name=".RegisterAdminActivity" />
         <activity android:name=".LoginAdminActivity" />
         <activity android:name=".Medicine.DrugsActivity" />
-        <activity android:name=".PrescriptionDetails" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivityUser" />
         <activity android:name=".LoginActivityUser" />

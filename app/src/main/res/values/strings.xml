@@ -5,12 +5,12 @@
     <string name="edit_text_presc_hint">Type the Medicines you want </string>
     <string name="edit_text_address_hint">Address</string>
     <string name="enter_order">put your order Here</string>
-    <string name="bt_upload_image">Or Upload Prescription</string>
+    <string name="bt_upload_image">Or Upload Prescription</string>+
     <!--main activity admin strings -->
     <string name="text_view_address_admin_main">Address</string>
     <string name="text_view_name_admin_main">Name</string>
     <string name="text_view_Order_admin_main">Order</string>
-    <string name="text_view_Phone_admin_main">Order</string>
+    <string name="text_view_Phone_admin_main">؛Phone</string>
     <string name="accept_button_main_admin">Accept</string>
     <string name="deny_button_main_admin">Deny</string>
     <!--choose pharmacy strings-->
