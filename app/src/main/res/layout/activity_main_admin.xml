@@ -80,27 +80,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <Button
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:id="@+id/accept_button_main_admin"
-                    android:background="@drawable/button_accept"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/accept_button_main_admin"
-                    android:layout_marginEnd="30dp"
-                    android:textColor="@android:color/white"
+
                     />
-                <Button
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:id="@+id/deny_button_main_admin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/deny_button_main_admin"
-                    android:background="@drawable/button_deny"
-                    android:textColor="@android:color/white"
-                    />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -19,9 +19,9 @@ package com.example.pharma_user;
         import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginAdminActivity extends AppCompatActivity {
-    private Button LoginButtonAdmin,CreateNewAccountButtonAdmin;
+    private Button LoginButtonAdmin;
     private EditText UserEmailAdmin, UserPasswordAdmin;
-    private TextView ForgetPasswordLinkAdmin;
+    private TextView ForgetPasswordLinkAdmin,CreateNewAccountLinkAdmin;
     private ProgressDialog loadingBar;
     private FirebaseAuth nAuth;
 
@@ -35,7 +35,7 @@ public class LoginAdminActivity extends AppCompatActivity {
 
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
 
-        CreateNewAccountButtonAdmin.setOnClickListener(new View.OnClickListener() {
+        CreateNewAccountLinkAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendUserToRegisterAdminActivity();
@@ -73,7 +73,7 @@ public class LoginAdminActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {//lw 3aml elaccount mogod ytl3lo massg eno 3aml login
-                                SendUserToMainAdminActivity();
+                                SendUserToRequestAdminActivity();
                                 Toast.makeText(LoginAdminActivity.this, "Logged in successful", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                             } else {
@@ -88,8 +88,8 @@ public class LoginAdminActivity extends AppCompatActivity {
     }
 
 
-    private void SendUserToMainAdminActivity() {
-        Intent mainIntent = new Intent(LoginAdminActivity.this, MainActivityAdmin.class);
+    private void SendUserToRequestAdminActivity() {
+        Intent mainIntent = new Intent(LoginAdminActivity.this, RegisterAdminActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();
@@ -97,7 +97,7 @@ public class LoginAdminActivity extends AppCompatActivity {
 
     private void InitializeFields() {//t3ref eli mogod feldesign
         LoginButtonAdmin = (Button) findViewById(R.id.login_button_admin);
-        CreateNewAccountButtonAdmin=(Button) findViewById(R.id.login_create_new_account_button_admin);
+        CreateNewAccountLinkAdmin = (TextView) findViewById(R.id.login_create_new_account_text_admin);
         UserEmailAdmin = (EditText) findViewById(R.id.login_email_admin);
         UserPasswordAdmin= (EditText) findViewById(R.id.login_password_admin);
         ForgetPasswordLinkAdmin = (TextView) findViewById(R.id.forget_password_link_login_admin);

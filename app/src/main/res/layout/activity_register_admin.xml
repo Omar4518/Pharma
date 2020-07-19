@@ -105,6 +105,13 @@
                     android:inputType="textPassword"
                     android:padding="16dp"
                     />
+                <EditText
+                    android:id="@+id/text_view_Pharma_name_register_admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_text_pharma_name_register_admin"
+                    android:padding="16dp"
+                    />
 
 
             </LinearLayout>

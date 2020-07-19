@@ -114,6 +114,16 @@
                     android:textColor="@android:color/background_light"
                     android:textSize="24sp"
                     android:layout_below="@id/forget_password_link_login_user"/>
+                <CheckBox
+                    android:id="@+id/saveLoginCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/login_button_user"
+                    android:text="Remeber Me : "
+                    android:layout_marginLeft="19dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginRight="19dp"
+                    />
 
                 <com.google.android.gms.common.SignInButton
                     android:id="@+id/login_button_user_google"
@@ -122,8 +132,8 @@
                     android:layout_centerHorizontal="true"
                     android:textAlignment="center"
                     android:layout_marginTop="8dp"
-                    android:layout_below="@id/text_or"
-                    android:text="@string/login_button_user2"
+                    android:layout_below="@id/saveLoginCheckBox"
+                    android:text="@string/login_button_google_user"
                     android:textAllCaps="false"
                     android:textColor="@android:color/background_light"
                     android:textSize="24sp" />
@@ -144,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/text_dont_have_account"
                     android:layout_below="@id/login_button_user_google"
-                    android:text="@string/text_dont_have_account"
+                    android:text="@string/text_dont_have_account_user"
                     android:layout_marginTop="8dp"/>
 
                 <TextView

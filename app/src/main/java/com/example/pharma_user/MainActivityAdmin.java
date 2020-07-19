@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivityAdmin extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private Button AcceptButton,DenyButton;
     private FirebaseUser currentUser;
     final FirebaseDatabase databasse = FirebaseDatabase.getInstance();
     final DatabaseReference referencce = databasse.getReference();
@@ -26,7 +28,11 @@ public class MainActivityAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_main_admin);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
+
     }
+
+
+
 
 
     @Override

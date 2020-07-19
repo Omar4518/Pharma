@@ -10,9 +10,8 @@
     <string name="text_view_address_admin_main">Address</string>
     <string name="text_view_name_admin_main">Name</string>
     <string name="text_view_Order_admin_main">Order</string>
-    <string name="text_view_Phone_admin_main">؛Phone</string>
-    <string name="accept_button_main_admin">Accept</string>
-    <string name="deny_button_main_admin">Deny</string>
+    <string name="text_view_Phone_admin_main">Phone</string>
+
     <!--choose pharmacy strings-->
     <string name="text_view_number_pharma">Pharmacy Number: </string>
     <string name="button_submit_order">Submit Order</string>
@@ -34,16 +33,18 @@
     <string name="text_or_user">Or</string>
     <string name="login_create_new_account_text_user">Create New Account</string>
     <string name="login_button_user">Login</string>
-    <string name="login_button_user2">Login Google</string>
-    <string name="text_dont_have_account">Dont have account? </string>
+    <string name="login_button_google_user">SignIn</string>
+    <string name="text_dont_have_account_user">Dont have account? </string>
     <!--login admin strings-->
     <string name="login_admin">Login Admin</string>
     <string name="edit_text_email_login_hint_admin">Email</string>
     <string name="edit_text_password_login_hint_admin">password</string>
     <string name="text_view_forget_password_admin">Forget Password?</string>
     <string name="text_or_admin">Or</string>
-    <string name="login_create_new_account_button_admin">Create New Account</string>
-    <string name="login_button_admin">Login</string>
+    <string name="login_create_new_account_text_admin">Create New Account</string>
+    <string name="button_login_admin">LogIn</string>
+    <string name="login_button_google_admin">SignIn</string>
+    <string name="text_dont_have_account_admin">Dont have account? </string>
     <!--Register User strings-->
     <string name="edit_text_name_register_hint_user">Name</string>
     <string name="edit_text_address_register_hint_user">Address</string>
@@ -60,6 +61,7 @@
     <string name="edit_text_email_register_admin">Email</string>
     <string name="edit_text_Password_register_admin">Password</string>
     <string name="button_register_admin">Create Account</string>
+    <string name="edit_text_pharma_name_register_admin">Pharmacy Name</string>
     <!--welcome strings-->
     <string name="button_login_pharma">Pharma Login</string>
     <string name="text_view_welcome">Welcome</string>
@@ -83,6 +85,17 @@
     <string name="text_view_apartment_no">Apartment Number: </string>
     <string name="button_location">get location</string>
     <string name="text_view_title_address">Address</string>
+    <!-- User Details In Admin -->
+    <string name="user_details_admin_name">User Name</string>
+    <string name="user_details_admin_add">Address:</string>
+    <string name="user_details_admin_order">Order</string>
+    <string name="accept_button_main_admin">Accept</string>
+    <string name="deny_button_main_admin">Deny</string>
+    <string name="user_details_admin_build">Building Number</string>
+    <string name="user_details_admin_floor">Floor Number</string>
+    <string name="user_details_admin_app">Apartment Number</string>
+
+
 
 
 </resources>

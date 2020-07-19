@@ -22,13 +22,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterAdminActivity extends AppCompatActivity {
     private FirebaseUser currentAdmin;
-    private EditText RegisterNameAdmin, RegisterAddAdmin ,RegisterPhoneAdmin, RegisterEmailAdmin, RegisterPassAdmin;
+    private EditText RegisterNameAdmin, RegisterAddAdmin ,RegisterPhoneAdmin, RegisterEmailAdmin, RegisterPassAdmin,RegisterPharmaName;
     private Button RegisterButtonAdmin;
     private FirebaseAuth registerAuthAdmin;
     private ProgressDialog loadingBar;
     private DatabaseReference RootReff;
     private FirebaseDatabase referencce;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +36,7 @@ public class RegisterAdminActivity extends AppCompatActivity {
         registerAuthAdmin = FirebaseAuth.getInstance();
         RootReff = FirebaseDatabase.getInstance().getReference();
         if(registerAuthAdmin.getCurrentUser() != null ){
-            SendUserToMainAdminActivity();
+            SendUserToRequestAdminActivity();
             finish();
         }
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
@@ -83,10 +82,11 @@ public class RegisterAdminActivity extends AppCompatActivity {
                                     String adminPass = RegisterPassAdmin.getEditableText().toString();
                                     String adminPhone = RegisterPhoneAdmin.getEditableText().toString();
                                     String adminAdd = RegisterAddAdmin.getEditableText().toString();
+                                    String pharmaName = RegisterPharmaName.getEditableText().toString();
                                     //save in firebase
-                                    AdminHelper adminHelper = new AdminHelper(adminName,adminEmail,adminPass,adminPhone,adminAdd);
+                                    AdminHelper adminHelper = new AdminHelper(adminName,adminAdd,adminEmail,adminPass,adminPhone,pharmaName);
                                     RootReff.child(currentAdmin).setValue(adminHelper);
-                                    SendUserToMainAdminActivity();
+                                    SendUserToRequestAdminActivity();
                                     Toast.makeText(RegisterAdminActivity.this, "Account Created Successfully", Toast.LENGTH_LONG).show();
                                     loadingBar.dismiss();
                                 }
@@ -104,6 +104,7 @@ public class RegisterAdminActivity extends AppCompatActivity {
     private void InitializeFields() {//t3ref eli mogod feldesign
         RegisterNameAdmin = (EditText) findViewById(R.id.text_view_name_register_admin);
         RegisterPhoneAdmin = (EditText) findViewById(R.id.text_phone_register_admin);
+        RegisterPharmaName = (EditText) findViewById(R.id.text_view_Pharma_name_register_admin);
         RegisterAddAdmin = (EditText) findViewById(R.id.text_address_register_admin); //downward casting
         RegisterEmailAdmin = (EditText) findViewById(R.id.text_view_email_register_admin);
         RegisterPassAdmin = (EditText) findViewById(R.id.text_view_password_register_admin);
@@ -111,8 +112,8 @@ public class RegisterAdminActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
 
     }
-    private void SendUserToMainAdminActivity() {
-        Intent mainIntent = new Intent(RegisterAdminActivity.this, MainActivityAdmin.class);
+    private void SendUserToRequestAdminActivity() {
+        Intent mainIntent = new Intent(RegisterAdminActivity.this, RequestActivityAdmin.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();

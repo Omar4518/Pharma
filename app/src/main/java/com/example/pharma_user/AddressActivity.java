@@ -12,32 +12,61 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddressActivity extends AppCompatActivity {
     private Button buttonLocation,buttonNext;
-    private EditText address,locality,country;
+    private EditText Address,locality,country,BuildNo,FloorNo,AppNo;
     FusedLocationProviderClient fusedLocationProviderClient;
+    private DatabaseReference ref;
+    private FirebaseDatabase database;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
+        mAuth = FirebaseAuth.getInstance();
         InitializeFields();
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SendUserToPharmacyActivity();
+                String buildNo = BuildNo.getText().toString();
+                String floorNo = FloorNo.getText().toString();
+                String appNo = AppNo.getText().toString();
+                if (TextUtils.isEmpty(buildNo))
+                {
+                    BuildNo.setError("Please enter Your Building Number");
+                    return;
+                }
+                if (TextUtils.isEmpty(floorNo))
+                {
+                    FloorNo.setError("Please enter Your Floor No");
+                    return;
+                }
+                if (TextUtils.isEmpty(appNo))
+                {
+                    AppNo.setError("Please enter Apartment Number");
+                    return;
+                }
+                SendDataToFirebase();
+
             }
         });
 
@@ -46,20 +75,39 @@ public class AddressActivity extends AppCompatActivity {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         buttonLocation.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+
                 //check permission
                 if (ActivityCompat.checkSelfPermission(AddressActivity.this
                         , Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     //when permission granted
                     getLocation();
-                } else {
+                }
+                else {
                     //when permission denied
                     ActivityCompat.requestPermissions(AddressActivity.this
                             , new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-
                 }
+
             }
         });
+    }
+
+    private void SendDataToFirebase() {
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Orders");
+        //get all the values from the fields
+        String currentAdmin = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
+        String address = Address.getEditableText().toString();
+        String buildNo = BuildNo.getEditableText().toString();
+        String floorNo = FloorNo.getEditableText().toString();
+        String appNo = AppNo.getEditableText().toString();
+
+        //save in firebase
+        AddressOrder addressOrder = new AddressOrder(address,buildNo,floorNo,appNo);
+        ref.child(currentAdmin).child("Address").setValue(addressOrder);
+        SendUserToPharmacyActivity();
     }
 
     private void SendUserToPharmacyActivity() {
@@ -69,9 +117,12 @@ public class AddressActivity extends AppCompatActivity {
 
     private void InitializeFields() {
         buttonLocation = (Button) findViewById(R.id.button_location);
-        address = (EditText) findViewById(R.id.edit_text_address_user);
+        Address = (EditText) findViewById(R.id.edit_text_address_user);
         locality = (EditText) findViewById(R.id.edit_text_local_user);
         country = (EditText) findViewById(R.id.edit_text_country);
+        BuildNo = (EditText) findViewById(R.id.edit_text_build_no);
+        FloorNo = (EditText) findViewById(R.id.edit_text_floorno);
+        AppNo = (EditText) findViewById(R.id.edit_text_apartmentNo);
         buttonNext = (Button) findViewById(R.id.button_next_add);
 
 
@@ -119,7 +170,7 @@ public class AddressActivity extends AppCompatActivity {
                         ));
 
                         //set  Address
-                        address.setText(Html.fromHtml(
+                        Address.setText(Html.fromHtml(
                                 "<font color='#6200EE'><b>Address  :</b><br></font>"
                                         +addresses.get(0).getAddressLine(0)
                         ));

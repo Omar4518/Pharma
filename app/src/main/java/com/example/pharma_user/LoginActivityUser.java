@@ -1,9 +1,15 @@
 package com.example.pharma_user;
+
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,11 +35,12 @@ public class LoginActivityUser extends AppCompatActivity {
     private static final int RC_SIGN_IN = 101;
     private Button LoginButtonUser;
     private EditText UserEmailUser, UserPasswordUser;
-    private TextView ForgetPasswordLinkUser,CreateNewAccountLinkUser;
+    private TextView ForgetPasswordLinkUser, CreateNewAccountLinkUser;
     private ProgressDialog loadingBar;
     private FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
     SignInButton ButtonGoogle;
+
 
 
     @Override
@@ -42,7 +49,7 @@ public class LoginActivityUser extends AppCompatActivity {
         setContentView(R.layout.activity_login_user);
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
         mAuth = FirebaseAuth.getInstance();
-        ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
+             ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivityUser.this, ForgetPasswordUserActivity.class));
@@ -64,11 +71,9 @@ public class LoginActivityUser extends AppCompatActivity {
                         break;
                     // ...
                 }
-                }
+            }
         });
-
-
-        CreateNewAccountLinkUser.setOnClickListener(new View.OnClickListener() {
+            CreateNewAccountLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SendUserToRegisterUserActivity();
@@ -108,6 +113,7 @@ public class LoginActivityUser extends AppCompatActivity {
             }
         }
     }
+
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
@@ -152,18 +158,13 @@ public class LoginActivityUser extends AppCompatActivity {
         if (userEmail.isEmpty())//lw sab mkan elemail fady y2olo ektb email
         {
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (userPassword.isEmpty())//lw sab mkan elpass fady y2olo ektb elpass
+        } else if (userPassword.isEmpty())//lw sab mkan elpass fady y2olo ektb elpass
         {
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
-        }
-        else if(userEmail.endsWith(".com")!= true || userEmail.contains("@")!= true)
-        {
-            Toast.makeText(getApplicationContext(),"please valid E-mail",Toast.LENGTH_SHORT).show();
+        } else if (!userEmail.endsWith(".com") || !userEmail.contains("@")) {
+            Toast.makeText(getApplicationContext(), "please valid E-mail", Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else {
+        } else {
             loadingBar.setTitle("Sign In");
             loadingBar.setMessage("please wait");
             loadingBar.setCanceledOnTouchOutside(false);
@@ -182,11 +183,13 @@ public class LoginActivityUser extends AppCompatActivity {
                                 loadingBar.dismiss();
 
                             }
+
                         }
                     });
         }
         return true;
     }
+
 
     private void SendUserToMainUserActivity() {
         Intent mainUserIntent = new Intent(LoginActivityUser.this, MainActivity.class);
@@ -203,6 +206,4 @@ public class LoginActivityUser extends AppCompatActivity {
         ForgetPasswordLinkUser = (TextView) findViewById(R.id.forget_password_link_login_user);
         loadingBar = new ProgressDialog(this);
     }
-
-
 }

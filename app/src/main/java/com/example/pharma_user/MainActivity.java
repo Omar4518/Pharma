@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private FirebaseAuth mAuth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();//34an 23rf eldatabase
-    final DatabaseReference reference = database.getReference();
+    DatabaseReference reference = database.getReference();
     private Button chooseMedicineButton,btn_choose;
     private ImageView imageView;
     private Uri filePath;
@@ -112,9 +112,9 @@ public class MainActivity extends AppCompatActivity {
                 chooseImage();
             }
         });
-
-
     }
+
+
 
     //photo
     private void chooseImage() {
@@ -151,13 +151,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //0000000000000000000000
        if (requestCode == REQUEST_CODE) {
            if (resultCode == RESULT_OK) {
+               assert data != null;
                String result = data.getStringExtra("returnData");
                EditText editText = (EditText) findViewById(R.id.text_view_Presc);
                editText.setText(result);
            }
 
        }
-       if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+       if (requestCode == 1 && resultCode == RESULT_OK && data.getData() != null) {
            filePath = data.getData();
 
            try {
@@ -180,6 +181,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onDestroy();
+    }
+
     private void SendUserToWelcomeUserActivity() {
         Intent loginIntent = new Intent(MainActivity.this, LoginActivityUser.class);
         startActivity(loginIntent);
@@ -193,31 +200,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendData() {
         EditText editTextMedicine = findViewById(R.id.text_view_Presc); // ___XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX اى يبنى ده
-        final String Med = editTextMedicine.getText().toString();
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override//basagl elorders felfirebase
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                reference.child("Orders").child("Medicine").setValue(Med).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, "done", Toast.LENGTH_LONG);
-                    }
-                });
-                reference.child("Orders").child("Location");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
+        String Med = editTextMedicine.getText().toString();
+        reference = database.getReference("Orders");
+        String currentUser=mAuth.getCurrentUser().getUid();
+        String Medicine = editTextMedicine.getEditableText().toString();
+        MedicineOrder medicineOrder = new MedicineOrder(Medicine);
+        reference.child(currentUser).setValue(medicineOrder);
         if (filePath != null) {
-
-
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploding......");
+            progressDialog.setTitle("Uploading......");
             progressDialog.show();
 
 
@@ -226,13 +217,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressDialog.dismiss();
-                    Toast.makeText(MainActivity.this, "Image Uploded", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                    double progres = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                    progressDialog.setMessage("Uplodeed " + (int) progres + " % ");
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    progressDialog.setMessage("Uploaded " + (int) progress + " % ");
                 }
             });
         }
@@ -251,9 +242,11 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.main_logout_options_user) {
             mAuth.signOut();
             SendUserToLoginUserActivity();
+            finish();
         }
         return true;
     }
+
 
 }
 

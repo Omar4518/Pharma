@@ -1,17 +1,18 @@
 package com.example.pharma_user;
 
 public class AdminHelper {
-    String adminName,adminAdd,adminEmail,adminPass,adminPhone;
+    String adminName,adminAdd,adminEmail,adminPass,adminPhone,pharmaName;
 
     public AdminHelper() {
     }
 
-    public AdminHelper(String adminName, String adminAdd, String adminEmail, String adminPass, String adminPhone) {
+    public AdminHelper(String adminName, String adminAdd, String adminEmail, String adminPass, String adminPhone,String pharmaName) {
         this.adminName = adminName;
         this.adminAdd = adminAdd;
         this.adminEmail = adminEmail;
         this.adminPass = adminPass;
         this.adminPhone = adminPhone;
+        this.pharmaName = pharmaName;
     }
 
     public String getAdminName() {
@@ -52,6 +53,14 @@ public class AdminHelper {
 
     public void setAdminPhone(String adminPhone) {
         this.adminPhone = adminPhone;
+    }
+
+    public String getPharmaName() {
+        return pharmaName;
+    }
+
+    public void setPharmaName(String pharmaName) {
+        this.pharmaName = pharmaName;
     }
 }
 

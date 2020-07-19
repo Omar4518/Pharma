@@ -58,7 +58,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingTop="32dp"
                     >
 
                     <EditText
@@ -113,15 +112,15 @@
                         android:scrollbars="vertical"
                         android:inputType="textMultiLine"
                         android:layout_below="@id/edit_text_local_user"/>
+
                     <TextView
-                        android:layout_marginStart="8dp"
+                        android:id="@+id/text_view_build_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/button_location"
                         android:layout_marginTop="8dp"
                         android:hint="@string/text_view_build_no"
-                        android:padding="8dp"
-                        android:id="@+id/text_view_build_no"
-                        android:layout_below="@id/button_location"/>
+                        android:padding="8dp" />
 
                     <EditText
                         android:inputType="number"
