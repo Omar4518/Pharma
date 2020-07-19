@@ -72,16 +72,6 @@
                         android:text="@string/button_submit_order"
                         android:id="@+id/button_submit_order"
                         android:background="@drawable/buttons"/>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_below="@id/button_submit_order"
-                        android:text="submit"
-                        android:background="@drawable/buttons"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="150dp"
-                        android:id="@+id/button_submit2"/>
-
 
                 </RelativeLayout>
 

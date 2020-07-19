@@ -42,7 +42,7 @@ public class RequestActivityAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_admin);
-        InitializeFields();
+
         mAuth = FirebaseAuth.getInstance();
         currentUserId= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
         userRef = FirebaseDatabase.getInstance().getReference().child("Orders");
@@ -52,9 +52,10 @@ public class RequestActivityAdmin extends AppCompatActivity {
         requestRef= FirebaseDatabase.getInstance().getReference().child("Requests");
         myRequestList = findViewById(R.id.request_admin);
         myRequestList.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        InitializeFields();
+
     }
     private void InitializeFields() {
-        acceptButton = (Button) findViewById(R.id.accept_button_user_details_admin);
         declineButton = (Button) findViewById(R.id.deny_button_user_details_admin);
     }
 
@@ -90,7 +91,7 @@ public class RequestActivityAdmin extends AppCompatActivity {
         FirebaseRecyclerAdapter<AccessData,RequestViewHolder> adapter =
                 new FirebaseRecyclerAdapter<AccessData, RequestViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull final RequestViewHolder holder, int position, @NonNull AccessData accessData)
+                    protected void onBindViewHolder(@NonNull final RequestViewHolder holder, int position, @NonNull final AccessData accessData)
                     {
                         final String list_user_id = getRef(position).getKey();
                         DatabaseReference getTypeRef =getRef(position).child("request type").getRef();
@@ -110,11 +111,20 @@ public class RequestActivityAdmin extends AppCompatActivity {
                                             {
                                                 if(snapshot.hasChild("Address"))
                                                 {
+                                                    acceptButton = (Button) findViewById(R.id.accept_button_user_details_admin);
+                                                        acceptButton.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                Intent mainIntent = new Intent(RequestActivityAdmin.this,MainActivityAdmin.class);
+                                                                startActivity(mainIntent);
+                                                            }
+                                                        });
                                                     final String requestUserAdd = Objects.requireNonNull(snapshot.child("Address").getValue()).toString();
                                                     final String requestUserOrder = Objects.requireNonNull(snapshot.child("medicine").getValue()).toString();
 
                                                     holder.userAddress.setText(requestUserAdd);
                                                     holder.userOrder.setText(requestUserOrder);
+
 
                                                 }
                                                 else

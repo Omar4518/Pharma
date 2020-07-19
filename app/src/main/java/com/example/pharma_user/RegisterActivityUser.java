@@ -118,9 +118,4 @@ public class RegisterActivityUser extends AppCompatActivity {
         finish();
     }
 
-   /* private void SendUserToPhoneActivity() {
-        Intent phoneIntent = new Intent(registerActivity.this,VerifyPhoneNumber.class);
-        startActivity(phoneIntent);
-        finish();
-    }*/
 }

@@ -5,35 +5,39 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class MainActivityAdmin extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private Button AcceptButton,DenyButton;
-    private FirebaseUser currentUser;
+    private String currentUser;
     final FirebaseDatabase databasse = FirebaseDatabase.getInstance();
-    final DatabaseReference referencce = databasse.getReference();
+    DatabaseReference referencce,requestRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
         mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-
+        currentUser= Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
     }
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,20 +57,6 @@ public class MainActivityAdmin extends AppCompatActivity {
     }
 
     private void SendUserToLoginAdminActivity() {
-        Intent loginIntent = new Intent(MainActivityAdmin.this, LoginAdminActivity.class);
-        startActivity(loginIntent);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (currentUser == null) {
-            SendUserToWelcomeActivity();
-
-        }
-    }
-
-    private void SendUserToWelcomeActivity() {
         Intent loginIntent = new Intent(MainActivityAdmin.this, LoginAdminActivity.class);
         startActivity(loginIntent);
     }

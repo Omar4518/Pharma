@@ -206,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
         String Medicine = editTextMedicine.getEditableText().toString();
         MedicineOrder medicineOrder = new MedicineOrder(Medicine);
         reference.child(currentUser).setValue(medicineOrder);
+
+
         if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading......");
@@ -218,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressDialog.dismiss();
                     Toast.makeText(MainActivity.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
