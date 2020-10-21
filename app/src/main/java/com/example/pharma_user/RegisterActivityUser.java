@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class RegisterActivityUser extends AppCompatActivity {
     private FirebaseUser currentUser;
     private EditText RegisterNameUser, RegisterAddUser ,RegisterPhoneUser, RegisterEmailUser, RegisterPassUser;
@@ -61,7 +63,6 @@ public class RegisterActivityUser extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(userPassword)) {
             RegisterPassUser.setError("Password Is Required");//lw sab mkan elpass fady y2olo ektb elpass
-            return;
         } else {
             loadingBar.setTitle("Creating New Account");//lma y3ml account ytl3 yktblo en elaccount bit3aml
             loadingBar.setMessage("Please Wait");
@@ -77,7 +78,7 @@ public class RegisterActivityUser extends AppCompatActivity {
                                     reference = FirebaseDatabase.getInstance();
                                     RootRef = reference.getReference("UsersCredentials");
                                     //get all the values from the fields
-                                    String currentUser =registerAuthUser.getCurrentUser().getUid();
+                                    String currentUser = Objects.requireNonNull(registerAuthUser.getCurrentUser()).getUid();
                                     String name = RegisterNameUser.getEditableText().toString();
                                     String email = RegisterEmailUser.getEditableText().toString();
                                     String password = RegisterPassUser.getEditableText().toString();
@@ -91,7 +92,7 @@ public class RegisterActivityUser extends AppCompatActivity {
                                     loadingBar.dismiss();
                                 }
                             } else {//lw fe error ytl3lo elerror
-                                String message = task.getException().toString();
+                                String message = Objects.requireNonNull(task.getException()).toString();
                                 Toast.makeText(RegisterActivityUser.this, "Error" + message, Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
                                     }
