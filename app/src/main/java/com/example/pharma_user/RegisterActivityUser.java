@@ -86,9 +86,9 @@ public class RegisterActivityUser extends AppCompatActivity {
                                     String address = RegisterAddUser.getEditableText().toString();
                                     //save in firebase
                                     UserHelper userHelper = new UserHelper(name,email,password,phone,address);
-                                SendUserToMainActivity();
-                                RootRef.child(currentUser).setValue(userHelper);
-                                Toast.makeText(RegisterActivityUser.this, "Account Created Successfully", Toast.LENGTH_LONG).show();
+                                    SendUserToMainActivity();
+                                    RootRef.child(currentUser).setValue(userHelper);
+                                    Toast.makeText(RegisterActivityUser.this, "Account Created Successfully", Toast.LENGTH_LONG).show();
                                     loadingBar.dismiss();
                                 }
                             } else {//lw fe error ytl3lo elerror

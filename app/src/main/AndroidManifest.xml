@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RequestActivityAdmin"></activity>
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name"/>
+        <activity android:name=".RequestActivityAdmin"/>
         <activity android:name=".ChoosePharmacy" />
         <activity android:name=".ForgetPasswordUserActivity" />
         <activity android:name=".AddressActivity" />
@@ -21,7 +23,6 @@
         <activity android:name=".RegisterAdminActivity" />
         <activity android:name=".LoginAdminActivity" />
         <activity android:name=".Medicine.DrugsActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivityUser" />
         <activity android:name=".LoginActivityUser" />
         <activity android:name=".WelcomeActivity">

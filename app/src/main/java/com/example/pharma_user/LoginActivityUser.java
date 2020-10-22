@@ -49,7 +49,7 @@ public class LoginActivityUser extends AppCompatActivity {
         setContentView(R.layout.activity_login_user);
         InitializeFields();//bandah 3la elmethod eli b3rf fiha eli mogod feldesign
         mAuth = FirebaseAuth.getInstance();
-             ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
+        ForgetPasswordLinkUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivityUser.this, ForgetPasswordUserActivity.class));
@@ -176,13 +176,12 @@ public class LoginActivityUser extends AppCompatActivity {
                             if (task.isSuccessful()) {//lw 3aml elaccount mogod ytl3lo massg eno 3aml login
                                 SendUserToMainUserActivity();
                                 Toast.makeText(LoginActivityUser.this, "Logged in successful", Toast.LENGTH_SHORT).show();
-                                loadingBar.dismiss();
                             } else {
                                 String message = task.getException().toString();//lw fe error ytl3lo elerror
                                 Toast.makeText(LoginActivityUser.this, "Error : " + message, Toast.LENGTH_SHORT).show();
-                                loadingBar.dismiss();
 
                             }
+                            loadingBar.dismiss();
 
                         }
                     });
@@ -192,8 +191,10 @@ public class LoginActivityUser extends AppCompatActivity {
 
 
     private void SendUserToMainUserActivity() {
-        Intent mainUserIntent = new Intent(LoginActivityUser.this, MainActivity.class);
-        startActivity(mainUserIntent);
+        Intent mainIntent = new Intent(LoginActivityUser.this, MainActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
     }
 
 
